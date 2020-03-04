@@ -7,7 +7,14 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev:ssr": "ng run universal-server:serve-ssr",
+    "serve:ssr": "node dist/universal-server/server/main.js",
+    "build:ssr": "ng build --prod && ng run universal-server:server:production",
+    "prerender": "ng run universal-server:prerender",
+    "int:extract": "ng xi18n --output-path src/locale",
+    "build:client-and-server-bundles-i18n": "ng run universal-server:build:production-fr && ng run universal-server:build:production && ng run universal-server:build:production-de",
+    "build:i18n-ssr": "npm run build:client-and-server-bundles-i18n && npm run build:ssr"
   },
   "private": true,
   "dependencies": {
@@ -16,9 +23,13 @@
     "@angular/compiler": "~9.0.3",
     "@angular/core": "~9.0.3",
     "@angular/forms": "~9.0.3",
+    "@angular/localize": "^9.0.4",
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
+    "@angular/platform-server": "~9.0.3",
     "@angular/router": "~9.0.3",
+    "@nguniversal/express-engine": "^9.0.1",
+    "express": "^4.15.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -28,6 +39,8 @@
     "@angular/cli": "~9.0.4",
     "@angular/compiler-cli": "~9.0.3",
     "@angular/language-service": "~9.0.3",
+    "@nguniversal/builders": "^9.0.1",
+    "@types/express": "^4.17.0",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
