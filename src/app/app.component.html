@@ -1,6 +1,15 @@
 <section>
   <article>
+    <h2>Current value: {{getCurrentLanguage()}}</h2>
+    <h2>{{'value1' | translate:param }}</h2>
+    <p i18n="@@constructionDescription">{{'value2' | translate}}</p>
+    <h5>{{'value3' | translate}}</h5>
+    <h5>{{'value4' | translate}}</h5>
     <h1 i18n="@@constructionHeader">Under Construction!</h1>
     <p i18n="@@constructionDescription">This page is under construction.</p>
+
+    <select #langSelect (change)="changeLanguage(langSelect.value)">
+      <option *ngFor="let lang of getLanguages()" [value]="lang" [selected]="lang === getCurrentLanguage()">{{ lang }}</option>
+    </select>
   </article>
 </section>

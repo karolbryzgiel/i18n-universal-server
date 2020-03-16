@@ -1,0 +1,5 @@
+{
+  "value1": "Cześć {{value}} {{value2}}",
+  "value2": "To jest wartość druga.",
+  "value3": "To jest wartość trzecia!!!!!!"
+}
